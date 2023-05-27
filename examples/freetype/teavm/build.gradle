@@ -15,15 +15,15 @@ dependencies {
     implementation project(":examples:freetype:core")
 
     // Use snapshots
-  implementation "com.github.xpenatan.gdx-teavm:backend-teavm:1.0.0-SNAPSHOT"
-  implementation "com.github.xpenatan.gdx-teavm:gdx-freetype-teavm:1.0.0-SNAPSHOT"
+//  implementation "com.github.xpenatan.gdx-teavm:backend-teavm:1.0.0-SNAPSHOT"
+//  implementation "com.github.xpenatan.gdx-teavm:gdx-freetype-teavm:1.0.0-SNAPSHOT"
 
     // Or source projects
-  //  implementation project(":backends:backend-teavm")
-//    implementation project(":extensions:gdx-freetype-teavm")
+    implementation project(":backends:backend-teavm")
+    implementation project(":extensions:gdx-freetype-teavm")
 }
 
-project.ext.freeTypeMainClassName = "com.github.xpenatan.gdx.examples.teavm.BuildFreetypeDemo"
+project.ext.freeTypeMainClassName = "com.github.xpenatan.gdx.examples.teavm.BuildFreetypeTest"
 
 tasks.register('buildExampleCoreFreeType', JavaExec) {
     dependsOn classes
@@ -32,7 +32,7 @@ tasks.register('buildExampleCoreFreeType', JavaExec) {
     mainClass.set(project.freeTypeMainClassName)
     setClasspath(sourceSets.main.runtimeClasspath)
 }
-tasks.register('runCoreFreeTypeDemo') {
+tasks.register('runCoreFreeTypeTest') {
     dependsOn([
             ':examples:freetype:teavm:clean',
             ':examples:freetype:teavm:buildExampleCoreFreeType',
@@ -42,4 +42,4 @@ tasks.register('runCoreFreeTypeDemo') {
     setDescription("Run FreeType Demo example")
 }
 
-runCoreFreeTypeDemo.shouldRunAfter ":examples:freetype:teavm:clean"
+runCoreFreeTypeTest.shouldRunAfter ":examples:freetype:teavm:clean"

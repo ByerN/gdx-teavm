@@ -269,6 +269,7 @@ public class TeaBuilder {
         TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.scenes.scene2d");
         TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.math");
         TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.graphics.g2d.GlyphLayout");
+        TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.graphics.g2d.GlyphRun");
         TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.graphics.g2d.TextureRegion");
         TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.graphics.g2d.Sprite");
         TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.graphics.g2d.BitmapFont");

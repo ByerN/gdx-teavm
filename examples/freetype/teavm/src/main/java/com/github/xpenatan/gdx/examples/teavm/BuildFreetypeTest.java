@@ -9,7 +9,7 @@ import java.io.IOException;
 import org.teavm.tooling.TeaVMTool;
 
 @SkipClass
-public class BuildFreetypeDemo {
+public class BuildFreetypeTest {
 
     public static void main(String[] args) throws IOException {
         TeaBuildConfiguration teaBuildConfiguration = new TeaBuildConfiguration();

@@ -38,7 +38,7 @@ public class FreeTypeUtil {
     }
 
     @JSBody(params = {"buffer"}, script = "" +
-            "var typedArray = buffer.$array0.data;" +
+            "var typedArray = buffer.$array2.data;" +
             "return typedArray;")
     public static native ArrayBufferViewWrapper getTypedArray(JSObject buffer);
 }

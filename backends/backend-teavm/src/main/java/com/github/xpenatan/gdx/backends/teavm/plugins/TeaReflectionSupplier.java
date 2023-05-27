@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.teavm.classlib.ReflectionContext;
 import org.teavm.classlib.ReflectionSupplier;
 import org.teavm.model.ClassReader;
@@ -26,9 +27,9 @@ public class TeaReflectionSupplier implements ReflectionSupplier {
     }
 
     public static boolean containsReflection(String className) {
-        for(int i = 0; i < clazzList.size(); i++) {
+        for (int i = 0; i < clazzList.size(); i++) {
             String reflectionClass = clazzList.get(i);
-            if(className.contains(reflectionClass))
+            if (className.contains(reflectionClass))
                 return true;
         }
         return false;
@@ -47,14 +48,14 @@ public class TeaReflectionSupplier implements ReflectionSupplier {
     @Override
     public Collection<String> getAccessibleFields(ReflectionContext context, String className) {
         ClassReader cls = context.getClassSource().get(className);
-        if(cls == null) {
+        if (cls == null) {
             return Collections.emptyList();
         }
         Set<String> fields = new HashSet<>();
 
-        if(cls != null) {
-            if(canHaveReflection(className)) {
-                for(FieldReader field : cls.getFields()) {
+        if (cls != null) {
+            if (canHaveReflection(className)) {
+                for (FieldReader field : cls.getFields()) {
                     String name = field.getName();
                     fields.add(name);
                 }
@@ -66,24 +67,32 @@ public class TeaReflectionSupplier implements ReflectionSupplier {
     @Override
     public Collection<MethodDescriptor> getAccessibleMethods(ReflectionContext context, String className) {
         ClassReader cls = context.getClassSource().get(className);
-        if(cls == null) {
+        if (cls == null) {
             return Collections.emptyList();
         }
         Set<MethodDescriptor> methods = new HashSet<>();
-        if(canHaveReflection(className)) {
+        if (canHaveReflection(className)) {
             Collection<? extends MethodReader> methods2 = cls.getMethods();
-            for(MethodReader method : methods2) {
+            for (MethodReader method : methods2) {
                 MethodDescriptor descriptor = method.getDescriptor();
                 methods.add(descriptor);
             }
         }
+/*
+
+        System.out.println("className: " + className);
+        for (MethodDescriptor method : methods) {
+            System.out.println("method: " + method);
+        }
+*/
+
         return methods;
     }
 
     private boolean canHaveReflection(String className) {
-        for(int i = 0; i < clazzList.size(); i++) {
+        for (int i = 0; i < clazzList.size(); i++) {
             String name = clazzList.get(i);
-            if(className.contains(name)) {
+            if (className.contains(name)) {
                 return true;
             }
         }
